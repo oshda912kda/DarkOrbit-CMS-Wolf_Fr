@@ -1387,6 +1387,7 @@ class Functions
         if ($status) {
           $mysqli->begin_transaction();
           try {
+            if ($newBooster == '') {$newBooster = $boosters;}
             $mysqli->query("UPDATE player_accounts SET data = '" . json_encode($data) . "' WHERE userId = " . $player['userId'] . "");
             $mysqli->query("UPDATE player_equipment SET items = '" . json_encode($items) . "' WHERE userId = " . $player['userId'] . "");
             $mysqli->query("UPDATE player_accounts SET bootyKeys = '" . json_encode($booty) . "' WHERE userId = " . $player['userId'] . "");
